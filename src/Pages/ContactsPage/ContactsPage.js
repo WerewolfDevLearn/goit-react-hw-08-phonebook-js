@@ -35,7 +35,7 @@ export default function ContactsPage() {
       {contacts.length > 1 && <Filter />}
       {loader && <Loader />}
       {error && <Error />}
-      {contacts.length > 0 && !loader && <ContactsList />}
+      {contacts.length >= 1 && !loader && <ContactsList />}
     </div>
   );
 }

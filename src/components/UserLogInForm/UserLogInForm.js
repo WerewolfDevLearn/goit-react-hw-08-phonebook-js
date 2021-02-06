@@ -1,14 +1,24 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { logIn } from '../../redux/auth/auth-opretion';
 import UserLogInFormStl from './UserLogInForm.module.css';
 
 export default function UserLogInForm() {
   const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
 
+  const dispatch = useDispatch();
+
+  const onlogInUser = (userEmail, userPassword) => {
+    const userData = { email: userEmail, password: userPassword };
+    console.log(userData);
+    dispatch(logIn(userData));
+  };
+
   const onInputValue = e => {
     const { name, value } = e.target;
     switch (name) {
-      case 'userName':
+      case 'userEmail':
         setUserEmail(value);
         break;
       case 'userPassword':
@@ -18,9 +28,15 @@ export default function UserLogInForm() {
         break;
     }
   };
+  const onSubmitLogInUser = e => {
+    e.preventDefault();
+    onlogInUser(userEmail, userPassword);
+    setUserEmail('');
+    setUserPassword('');
+  };
 
   return (
-    <form className={UserLogInFormStl.ContactForm}>
+    <form onSubmit={onSubmitLogInUser} className={UserLogInFormStl.ContactForm}>
       <label className={UserLogInFormStl.label}>
         Email
         <input

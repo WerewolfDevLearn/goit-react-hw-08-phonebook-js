@@ -1,10 +1,19 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { register } from '../../redux/auth/auth-opretion';
 import RegistrationFormStl from './RegistrationForm.module.css';
 
 export default function RegistrationForm() {
-  const [userName, setUsername] = useState('');
+  const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
+  const dispatch = useDispatch();
+
+  const onRegisterUser = (userName, userEmail, userPassword) => {
+    const user = { name: userName, email: userEmail, password: userPassword };
+    console.log(user);
+    dispatch(register(user));
+  };
 
   const onInputValue = e => {
     const { name, value } = e.target;
@@ -16,14 +25,26 @@ export default function RegistrationForm() {
         setUserPassword(value);
         break;
       case 'userName':
-        setUsername(value);
+        setUserName(value);
         break;
       default:
         break;
     }
   };
+
+  const onSubmitRegisterUser = e => {
+    e.preventDefault();
+    onRegisterUser(userName, userEmail, userPassword);
+    setUserName('');
+    setUserEmail('');
+    setUserPassword('');
+  };
+
   return (
-    <form className={RegistrationFormStl.ContactForm}>
+    <form
+      onSubmit={onSubmitRegisterUser}
+      className={RegistrationFormStl.ContactForm}
+    >
       <label className={RegistrationFormStl.label}>
         Name
         <input
@@ -41,6 +62,7 @@ export default function RegistrationForm() {
           value={userEmail}
           onChange={onInputValue}
           name="userEmail"
+          autoCapitalize="off"
           className={RegistrationFormStl.input}
         />
       </label>
@@ -51,6 +73,7 @@ export default function RegistrationForm() {
           value={userPassword}
           onChange={onInputValue}
           name="userPassword"
+          autoCapitalize="off"
           className={RegistrationFormStl.input}
         />
       </label>

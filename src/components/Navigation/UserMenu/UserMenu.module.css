@@ -1,0 +1,22 @@
+.userBarContainer {
+  line-height: 1.5;
+  display: flex;
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+.userEmail {
+  font-size: 20px;
+  line-height: 1.5;
+  font-family: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif';
+}
+.userAvatar {
+}
+.button {
+  text-decoration: none;
+  color: #221122;
+  border: solid 1px #222222;
+  border-radius: 2px;
+  padding: 5px;
+  margin-left: 10px;
+}

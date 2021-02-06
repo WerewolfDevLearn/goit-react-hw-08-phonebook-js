@@ -1,31 +1,29 @@
 import { NavLink } from 'react-router-dom';
-import UserMenu from '../UserMenu/UserMenu';
+import { useSelector } from 'react-redux';
+import { getIsUserLoged } from '../../redux/auth/auth-selectors';
+import UserMenu from './UserMenu/UserMenu';
+import AuthNav from './AuthNav/AuthNav';
 import routes from '../../routes';
 import navStyle from './Navigation.module.css';
 
-const Navigation = () => {
+function Navigation() {
+  const isOnline = useSelector(getIsUserLoged);
   return (
-    <ul className={navStyle.list}>
-      <li key="NavigationHome" className={navStyle.listItem}>
+    <div className={navStyle.navigationContainer}>
+      <div className={navStyle.listItem}>
         <NavLink to={routes.home} className={navStyle.navLink}>
           Home
         </NavLink>
-      </li>
-      <li key="UserRegistration" className={navStyle.listItem}>
-        <NavLink to={routes.userRegistration} className={navStyle.navLink}>
-          Registration
+
+        <NavLink to={routes.contacts} className={navStyle.navLink}>
+          Contacts
         </NavLink>
-      </li>
-      <li key="UserLogIn" className={navStyle.listItem}>
-        <NavLink to={routes.userLogIn} className={navStyle.navLink}>
-          Login
-        </NavLink>
-      </li>
-      <li key="UserBar" className={navStyle.listItem}>
-        <UserMenu />
-      </li>
-    </ul>
+      </div>
+      {isOnline ? <UserMenu /> : <AuthNav />}
+      {/* <AuthNav />
+      <UserMenu /> */}
+    </div>
   );
-};
+}
 
 export default Navigation;

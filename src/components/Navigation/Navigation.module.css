@@ -16,9 +16,16 @@
 }
 
 .navLink {
+  display: block;
   text-decoration: none;
   color: #221122;
   border: solid 1px #222222;
   border-radius: 2px;
+  line-height: 2;
   padding: 5px;
+}
+
+.navigationContainer {
+  line-height: 2;
+  display: flex;
 }

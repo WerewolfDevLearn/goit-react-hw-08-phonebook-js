@@ -17,9 +17,11 @@ export default function ContactForm() {
     switch (name) {
       case 'contactName':
         setContactName(value);
+
         break;
       case 'contactNumber':
         setContactNumber(value);
+
         break;
       default:
         break;
@@ -31,6 +33,9 @@ export default function ContactForm() {
     if (contacts.some(contact => contact.name === contactName)) {
       alert(`${contactName} is already in Contacts`);
       return;
+    }
+    if (!contactName && !contactNumber) {
+      alert(`Please enter name and phonenumber`);
     }
     onAddContact(contactName, contactNumber);
     setContactName('');
