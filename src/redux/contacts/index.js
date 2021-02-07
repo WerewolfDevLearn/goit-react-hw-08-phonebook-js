@@ -20,7 +20,6 @@ import {
   getContacts,
   getFilter,
   getLoader,
-  getError,
   getVisibleContacts,
 } from './contacts-selectors';
 
@@ -45,6 +44,5 @@ export {
   getContacts,
   getFilter,
   getLoader,
-  getError,
   getVisibleContacts,
 };

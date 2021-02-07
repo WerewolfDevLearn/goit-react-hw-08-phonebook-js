@@ -2,7 +2,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { getError } from '../../redux/contacts';
+import { getError } from '../../redux/error/error-selectors';
 
 export default function Error() {
   const error = useSelector(getError);

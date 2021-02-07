@@ -1,17 +1,11 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  getContacts,
-  getLoader,
-  getError,
-  fetchContacts,
-} from '../../redux/contacts';
+import { getContacts, getLoader, fetchContacts } from '../../redux/contacts';
 import { ToastContainer } from 'react-toastify';
 import ContactForm from '../../components/ContactForm/ContactForm';
 import ContactsList from '../../components/ContactList/ContactList';
 import Filter from '../../components/Filter/Filter';
 import Loader from '../../components/Loader/Loader';
-import Error from '../../components/Error/Error';
 
 import ContactsPageSTL from './ContactsPage.module.css';
 
@@ -24,7 +18,6 @@ export default function ContactsPage() {
 
   const contacts = useSelector(getContacts);
   const loader = useSelector(getLoader);
-  const error = useSelector(getError);
 
   return (
     <div className={ContactsPageSTL.container}>
@@ -34,7 +27,7 @@ export default function ContactsPage() {
       <ToastContainer />
       {contacts.length > 1 && <Filter />}
       {loader && <Loader />}
-      {error && <Error />}
+
       {contacts.length >= 1 && !loader && <ContactsList />}
     </div>
   );

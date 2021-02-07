@@ -8,6 +8,8 @@ import PubliceRoute from './Routes/PabliceRoute';
 import { HomePage } from '../Pages';
 import Layout from './Layout/Layout';
 import Loader from './Loader/Loader';
+import Error from '../components/Error/Error';
+import { getError } from '../redux/error/error-selectors';
 import { ToastContainer } from 'react-toastify';
 import routes from '../routes';
 
@@ -23,7 +25,7 @@ const ContactsPage = lazy(() => import('../Pages/ContactsPage/ContactsPage'));
 export default function App() {
   const dispatch = useDispatch();
   const refreshingUser = useSelector(getRefreshingUser);
-
+  const error = useSelector(getError);
   useEffect(() => {
     dispatch(getCurrentUser());
   }, [dispatch]);
@@ -33,7 +35,7 @@ export default function App() {
   ) : (
     <Layout>
       <ToastContainer />
-
+      {error && <Error />}
       <Suspense fallback={<Loader />}>
         <Switch>
           {/* <Route path={routes.home} exact component={HomePage} /> */}
