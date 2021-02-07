@@ -5,6 +5,10 @@ import {
   loginSeccess,
   logoutSeccess,
   getCurrentUserSeccess,
+  loginError,
+  registerError,
+  getCurrentUserError,
+  getCurrentUserRequest,
 } from './auth-action';
 
 const initailState = { name: null, email: null };
@@ -22,7 +26,25 @@ const token = createReducer(null, {
   [logoutSeccess]: (_, action) => null,
 });
 
+const isLogged = createReducer(false, {
+  [registerSeccess]: () => true,
+  [loginSeccess]: () => true,
+  [getCurrentUserSeccess]: () => true,
+  [getCurrentUserError]: () => false,
+  [loginError]: () => false,
+  [registerError]: () => false,
+  [logoutSeccess]: () => false,
+});
+
+const refreshingUser = createReducer(false, {
+  [getCurrentUserRequest]: () => true,
+  [getCurrentUserError]: () => false,
+  [getCurrentUserSeccess]: () => false,
+});
+
 export default combineReducers({
   user,
   token,
+  isLogged,
+  refreshingUser,
 });

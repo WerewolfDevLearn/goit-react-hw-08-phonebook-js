@@ -14,10 +14,11 @@ function Navigation() {
         <NavLink to={routes.home} className={navStyle.navLink}>
           Home
         </NavLink>
-
-        <NavLink to={routes.contacts} className={navStyle.navLink}>
-          Contacts
-        </NavLink>
+        {isOnline && (
+          <NavLink to={routes.contacts} className={navStyle.navLink}>
+            Contacts
+          </NavLink>
+        )}
       </div>
       {isOnline ? <UserMenu /> : <AuthNav />}
       {/* <AuthNav />

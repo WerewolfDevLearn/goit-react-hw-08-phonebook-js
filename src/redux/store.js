@@ -1,4 +1,3 @@
-// import { combineReducers } from 'redux';
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import {
   persistStore,
@@ -11,8 +10,10 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+
 import contactsReducer from './contacts/contacts-reducer';
 import authReducer from './auth/auth-reducer';
+import errorReducer from './error/error-reducer';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -32,6 +33,7 @@ const store = configureStore({
   reducer: {
     contacts: contactsReducer,
     auth: persistReducer(authPersistConfig, authReducer),
+    error: errorReducer,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',
