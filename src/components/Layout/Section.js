@@ -1,10 +1,10 @@
-
 import Proptypes from 'prop-types';
+import SectiolStl from './Section.module.css';
 
 function Section({ title, children }) {
   return (
     <section>
-      <h2>{title}</h2>
+      <h2 className={SectiolStl.heading}>{title}</h2>
       {children}
     </section>
   );

@@ -1,22 +1,37 @@
 .userBarContainer {
   line-height: 1.5;
   display: flex;
+  align-items: center;
+  justify-content: center;
   margin-left: auto;
   margin-right: 10px;
 }
 
 .userEmail {
+  text-transform: uppercase;
   font-size: 20px;
-  line-height: 1.5;
+  line-height: 2;
   font-family: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif';
 }
 .userAvatar {
+  height: 40px;
+
+  margin-left: 10px;
 }
 .button {
+  background-color: none;
+  box-sizing: border-box;
+  height: 0px;
+  text-transform: uppercase;
   text-decoration: none;
+  text-align: center;
+  vertical-align: center;
   color: #221122;
   border: solid 1px #222222;
   border-radius: 2px;
-  padding: 5px;
+  padding: 10px;
   margin-left: 10px;
+  font-size: 20px;
+  height: 52px;
+  font-family: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif';
 }
